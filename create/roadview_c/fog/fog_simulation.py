@@ -340,8 +340,6 @@ if __name__ == '__main__':
         parameter_set = ParameterSet(alpha=available_alpha, gamma=0.000001, beta=args.beta)  # beta = [0.008, 0.05, 0.2]
 
         points = np.fromfile(all_paths[i], dtype=np.float32)
-        print(f"points: {points}")
-        print(points.shape)
         points = points.reshape((-1, args.n_features))
 
         points, _, num_fog, _ = simulate_fog(parameter_set, points, 10)

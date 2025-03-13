@@ -26,3 +26,10 @@ torchsparse_dir/
 *.log
 *.pth
 
+create/roadview_c/fog/heavy_fog.sh
+create/roadview_c/fog/heavy_fog.sh
+create/roadview_c/fog/moderate_fog.sh
+create/roadview_c/fog/light_fog.sh
+
+visualizations/visualization_config.yaml
+
