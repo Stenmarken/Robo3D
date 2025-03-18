@@ -21,7 +21,7 @@ from scipy.constants import speed_of_light as c     # in m/s
 def parse_arguments():
 
     parser = argparse.ArgumentParser(description='LiDAR foggification')
-
+    parser.add_argument('-b', '--beta', help="beta value (backscatter coefficient)", type=float)
     parser.add_argument('-a', '--alphas', help='list of alpha values', type=List[float])
     parser.add_argument('-c', '--n_cpus', help='number of CPUs that should be used', type=int, default=mp.cpu_count())
     parser.add_argument('-r', '--r_0_max', help='maximum range', type=int, default=200)
@@ -63,9 +63,7 @@ def generate_integral_lookup_tables(arguments) -> None:
         filename = f'integral_0m_to_{r_0_max}m_stepsize_{granularity}m_tau_h_20ns_alpha_{alpha}.pickle'
         filepath = save_path / filename
 
-        print(f'generating {filepath}')
-
-        p = ParameterSet(n=n, r_range=r_0_max, alpha=alpha)
+        p = ParameterSet(n=n, r_range=r_0_max, alpha=alpha, beta=args.beta)
         print(p.beta * 1)
 
         integral = {}
